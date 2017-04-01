@@ -12,8 +12,8 @@ CC=gcc
 # -Wall : afficher le maximum de messages d'erreurs
 OPTION= -g -Wall
 
-tp1:	tp1.o graphique.o clavier.o souris.o
-	$(CC) -o tp1 tp1.o graphique.o clavier.o souris.o $(LIB)
+tp1:	tp1.o graphique.o clavier.o souris.o menu.o
+	$(CC) -o tp1 tp1.o graphique.o clavier.o souris.o menu.o $(LIB)
 tp1.o: 	tp1.c
 	$(CC) -c tp1.c $(INCLUDE) $(OPTION)
 graphique.o:	graphique.c
@@ -22,6 +22,8 @@ clavier.o:	clavier.c
 	$(CC) -c clavier.c $(INCLUDE)
 souris.o:	souris.c
 	$(CC) -c souris.c $(INCLUDE)
+menu.o:	menu.c
+	$(CC) -c menu.c $(INCLUDE)
 
 # cible d'effacement des fichiers objets et de l'éxécutable
 clean :

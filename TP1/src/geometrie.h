@@ -3,6 +3,6 @@
 
 #define UNDEFINED -1E10
 
-typedef struct { float x, y } point2D;
+typedef struct { float x, y; } point2D;
 
 #endif

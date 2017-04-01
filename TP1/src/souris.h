@@ -7,6 +7,23 @@
 #include <GL/glut.h>
 #include <glut.h>
 
+////////////////////////////////////////////////////////////
+// \brief Gestion des évènements souris
+//
+// \param bouton le bouton à l'origine de l'évènement
+// ex: (GLUT_LEFT_BUTTON, GLUT_MIDDLE_BUTTON ou GLUT_RIGHT_BUTTON)
+// \param etat l'état du bouton (GLUT_DOWN ou GLUT_UP)
+// \param x l'abscisse de l'évènement
+// \param y l'ordonnée de l'évènement
+////////////////////////////////////////////////////////////
+void gestionSouris(int bouton, int etat, int x, int y);
 
+
+////////////////////////////////////////////////////////////
+// \brief Convertit les coordonnées de l'écran en coordonnées
+// openGL
+//
+////////////////////////////////////////////////////////////
+void screenTo2D(int mouseX, int mouseY, float* x, float* y);
 
 #endif
