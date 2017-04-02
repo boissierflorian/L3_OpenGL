@@ -2,8 +2,6 @@
 #include <GL/glu.h>
 #include <glut.h>
 
-
-
 /** 
  * Fonction permettant de dessiner un cube centré sur l'origine 
  * du repère de de taille dimxdimxdim.
@@ -66,12 +64,10 @@ static void cube(float dim)
  * forme d'une croix 3D.
  * @param dim la taille de la ligne représentant un demi-axe.
  */
-
 static void repere(float dim)
 {
-
   glBegin(GL_LINES);
- 
+  
   glColor3f(1.0, 1.0, 1.0);
   glVertex3f(-dim, 0.0, 0.0);
   glVertex3f( dim, 0.0, 0.0);
@@ -83,7 +79,18 @@ static void repere(float dim)
   glEnd();
 }
 
+/**
+ * Fonction gérant le redimensionnement de la fenêtre. 
+ */
+void retailler(GLsizei largeur, GLsizei hauteur)
+{
+  if (largeur > hauteur)
+    glViewport(largeur / 2 - hauteur / 2, 0, hauteur, hauteur);
+  else
+    glViewport(0, hauteur / 2 - largeur / 2, largeur, largeur);
 
+  glutPostRedisplay();
+}
 
 /**
  * Fonction utilisée pour afficher le monde 3D à visualiser. Cette fonction
@@ -99,11 +106,16 @@ void dessiner(void)
   /* raz de la fenetre avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  /* translation du repère de 5 unités sur l'axe Z */
+  /* suivi d'une rotation de 20 degrés autour de l'axe Y */
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glTranslatef(0.0, 0.0, -5.f);
+  glRotatef(20.0, 0.0, 1.0, 0.0);
+
   /* dessin des objets */
-  cube(2.0);
+  cube(2.0);  
   repere(2.0);
   
   glFlush();
-  return;
-
 }
