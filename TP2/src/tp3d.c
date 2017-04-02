@@ -3,10 +3,19 @@
 #include <glut.h>
 
 #include "graphique.h"
+#include "touches.h"
 
 /* dimensions initiales de la fenêtre d'affichage */
 #define LARGEUR  256
 #define HAUTEUR  256
+
+double trans_axeZ = 1.0;
+double angle_rotY = 0.0;
+double angle_rotX = 0.0;
+
+double kx = 1.0;
+double ky = 1.0;
+double kz = 1.0;
 
 /**
  * Fonction d'initialisation des paramètres d'affichage
@@ -38,7 +47,9 @@ int main (int argc, char *argv[])
   /* choix de la fonction de rafraichissement */
   glutDisplayFunc(dessiner);
   glutReshapeFunc(retailler);
-  
+  glutKeyboardFunc(gerer_clavier);
+  glutSpecialUpFunc(gerer_sclavier);
+
   init_screen();
 
   glEnable(GL_DEPTH_TEST);

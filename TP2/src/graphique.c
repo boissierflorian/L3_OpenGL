@@ -2,6 +2,8 @@
 #include <GL/glu.h>
 #include <glut.h>
 
+#include "touches.h"
+
 /** 
  * Fonction permettant de dessiner un cube centré sur l'origine 
  * du repère de de taille dimxdimxdim.
@@ -57,8 +59,6 @@ static void cube(float dim)
 }
 
 
-
-
 /** 
  * Fonction permettant de dessiner le repère du monde sous 
  * forme d'une croix 3D.
@@ -112,7 +112,11 @@ void dessiner(void)
   glLoadIdentity();
   glTranslatef(0.0, 0.0, -5.f);
   glRotatef(20.0, 0.0, 1.0, 0.0);
-
+  glTranslatef(0.0, 0.0, trans_axeZ);
+  glRotatef(angle_rotY, 0.0, 1.0, 0.0);
+  glRotatef(angle_rotX, 1.0, 0.0, 0.0);
+  glScalef(kx, ky, kz);
+  
   /* dessin des objets */
   cube(2.0);  
   repere(2.0);

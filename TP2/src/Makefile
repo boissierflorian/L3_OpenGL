@@ -20,8 +20,8 @@ OPT= -g -Wall
 
 # définition des cibles de compilation
 
-tp3d:	tp3d.o graphique.o
-	$(CC) -o tp3d tp3d.o graphique.o $(OPT)  $(LIB)
+tp3d:	tp3d.o graphique.o touches.o
+	$(CC) -o tp3d tp3d.o graphique.o touches.o $(OPT)  $(LIB)
 
 tp3d.o:	tp3d.c
 	$(CC) -c tp3d.c  $(OPT) $(INCLUDE)
@@ -29,8 +29,10 @@ tp3d.o:	tp3d.c
 graphique.o:	graphique.c
 	$(CC) -c graphique.c  $(OPT) $(INCLUDE)
 
+touches.o:	touches.c
+	$(CC) -c touches.c  $(OPT) $(INCLUDE)
+
 # cible d'effacement des fichiers objets et de l'exécutable
 
 clean:
-	rm -f *.o tp3d
-
+	rm -f *.o tp3d *~
