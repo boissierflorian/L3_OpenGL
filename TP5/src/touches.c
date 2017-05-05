@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////
 #include "touches.h"
 #include <glut.h>
+#include <stdio.h>
 
 // Variables globales
 double transZ = 0.0;
